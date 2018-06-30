@@ -8,5 +8,6 @@ RUN npm set progress=false &&\
 
 FROM gcr.io/distroless/nodejs
 WORKDIR /srv/app
+COPY . .
 COPY --from=dependencies /usr/src/app/node_modules ./node_modules
-CMD app.js
+CMD ["app.js"]
