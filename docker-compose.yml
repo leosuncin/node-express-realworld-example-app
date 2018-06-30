@@ -1,0 +1,26 @@
+version: "3.5"
+
+services:
+  backend:
+    build: .
+    env_file: .env
+    ports:
+      - 3000:3000
+    networks:
+      - realworld
+    depends_on:
+      - db
+  
+  db:
+    image: mongo:3.6
+    hostname: db
+    networks:
+      - realworld
+    volumes:
+      - mongodb-data:/data/db
+
+volumes:
+  mongodb-data: ~
+
+networks:
+  realworld: ~
